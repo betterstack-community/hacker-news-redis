@@ -1,0 +1,23 @@
+{
+  "name": "hacker-news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx pm2-dev server.js",
+    "start": "npx pm2 start server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api-benchmark": "^1.0.1",
+    "date-fns": "^2.27.0",
+    "express": "^4.17.1",
+    "pug": "^3.0.2",
+    "redis": "^4.0.1"
+  },
+  "devDependencies": {
+    "pm2": "^5.1.2"
+  }
+}

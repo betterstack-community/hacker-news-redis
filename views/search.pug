@@ -1,0 +1,32 @@
+extends default
+
+block content
+  header
+    a.logo(href='/') Hacker News
+    form(action='/search' method='GET')
+      input.search-input(autofocus='' value=`${searchQuery || ''}` placeholder='Enter a search term' type='search' name='q')
+    a.button.github-button(href='https://github.com/finallyayo/hacker-news') Source code
+
+  .container
+    if !searchResults || !searchResults.nbHits
+      .result-count
+          p No results found for your query:
+          |
+          strong #{searchQuery}
+    else
+      ul.search-results
+        each story in searchResults.hits
+          li.news-article
+            a.title-link(target='_blank' rel='noreferrer noopener' href=`${story.url}`)
+              h3.title #{story.title}
+            .metadata #{story.points} points by
+              |
+              |
+              span.author #{story.author}
+              |
+              | on
+              |
+              time.created-date #{dateFns.format(new Date(`${story.created_at}`), 'LLL dd, yyyy')}
+              |
+              |
+              a.comments(target='_blank' rel='noreferrer noopener' href=`https://news.ycombinator.com/item?id=${story.objectID}`) #{story.num_comments} comments

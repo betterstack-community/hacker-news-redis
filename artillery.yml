@@ -1,0 +1,11 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+
+scenarios:
+  - name: "Search HN for Programming content"
+    flow:
+      - get:
+          url: "/search?q=Programming"
